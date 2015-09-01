@@ -1,4 +1,26 @@
-= Guide
+= Example Manual
+Doc Writer <doc.writer@example.org>
+v1.0, 2014-09-09
+:example-caption!:
+ifndef::imagesdir[:imagesdir: images]
+ifndef::sourcedir[:sourcedir: ../java]
+
+
+
+
+:toc:
+
+
+
+== Titre 1
+
+== Titre 2
+
+=== Sous-Titre 2.1
+
+=== Sous-Titre 2.2
+
+== Titre 3
 
 Paraf 1.
 
@@ -7,10 +29,117 @@ Paraf 1.
 [source,java]
 .Java code from project
 ----
-include::src/main/java/asciidoc_maven_site_sample/asciidoc_maven_site_sample/App.java[tags=main]
+include::../../main/java/asciidoc_maven_site_sample/asciidoc_maven_site_sample/App.java[tags=main]
+----
+
+[source,java]
+.Java code from project same directory
+----
+include::App.java[tags=main]
+----
+
+
+[source]
+.An illegal XML tag
+----
+include::../../../pom.xml[tags=timings]
 ----
 
 
 Include Intro
-include::intro.adoc[]
+include::intro.adoc[]#
+
+Link Intro
+link:intro.adoc[Link Intro]
+
+
+Link Intro
+link:https://github.com/alexandrenavarro/asciidoc-sample/blob/master/src/site/asciidoc/intro.adoc[Link Intro]
+
+
+
+
+== Diagrams
+
+[ditaa,asciidoctor-diagram-process,file=asciidoctor-diagram-process.png]
+....
+                   +-------------+
+                   | Asciidoctor |-------+
+                   |   diagram   |       |
+                   +-------------+       | PNG out
+                       ^                 |
+                       | ditaa in        |
+                       |                 v
+ +--------+   +--------+----+    /---------------\
+ |        |---+ Asciidoctor +--->|               |
+ |  Text  |   +-------------+    |   Beautiful   |
+ |Document|   |   !magic!   |    |    Output     |
+ |     {d}|   |             |    |               |
+ +---+----+   +-------------+    \---------------/
+     :                                   ^
+     |          Lots of work             |
+     +-----------------------------------+
+....
+
+
+=== plantuml
+
+[plantuml,auth-protocol]
+....
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+....
+
+
+
+[plantuml,auth-protocol]
+....
+
+Class01 <|-- Class02
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 -- Class10
+Class11 <|.. Class12
+Class13 --> Class14
+Class15 ..> Class16
+Class17 ..|> Class18
+Class19 <--* Class20
+....
+
+
+== UML
+
+.UML Diagram Example
+[uml,file="uml-example.png"]
+--
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|- List
+AbstractCollection <|- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList {
+  Object[] elementData
+  size()
+}
+
+
+== Attributes
+
+.Built-in
+asciidoctor-version:: {asciidoctor-version}
+safe-mode-name:: {safe-mode-name}
+docdir:: {docdir}
+docfile:: {docfile}
+imagesdir:: {imagesdir}
 

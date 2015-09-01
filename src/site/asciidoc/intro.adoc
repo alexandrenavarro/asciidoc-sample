@@ -1,14 +1,12 @@
+
 Intro
 
-Snippet xml
-[snippet,xml]
+[source,java]
+.Java code from project
 ----
-source=pom.xml
-tags=snip-id
+include::../../main/java/asciidoc_maven_site_sample/asciidoc_maven_site_sample/App.java[tags=main]
 ----
 
-[source,xml]
-Include from pom.xml
-----
-include::pom.xml[tags=snip-id]
-----
+
+
+
